@@ -1,0 +1,72 @@
+<div className='flex flex-col h-full w-full '>
+    <div className='w-full h-full '>
+     
+     <div className=' flex  justify-around items-center  my-6 mx-6 gap-14'>
+
+
+      </div>
+    </div>
+    <div className=' flex justify-around items-center  my-6 mx-6 gap-14'>
+
+   
+    </div>
+    <div className='justify-around items-center  my-6 mx-6 gap-14 border-2'>
+   
+        <table className='shadow-md border-3  border-collapse text-color-black flex-warp rounded-lg' style={{width:'100%'}}>
+            <th> products</th>
+            <tr>
+            <th>
+              code
+            </th>  
+            <th>
+              name
+            </th>  
+            <th>
+              category
+            </th>  
+            <th>
+              price
+            </th>  
+            <th>
+              quantity
+            </th>  
+            </tr>
+            <tr>
+              <td>
+                22333
+              </td>
+              <td>
+                slide
+              </td>
+              <td>
+                shoe
+              </td>
+              <td>
+                N 22333
+              </td>
+              <td>
+                444
+              </td>
+            </tr>
+            <tr>
+              <td>
+                22333
+              </td>
+              <td>
+                slide
+              </td>
+              <td>
+                shoe
+              </td>
+              <td>
+                N 22333
+              </td>
+              <td>
+                444
+              </td>
+            </tr>
+          
+          
+          </table>
+    </div>
+    </div>
