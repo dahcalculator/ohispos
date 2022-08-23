@@ -23,8 +23,6 @@ import ViewProduct from './ViewProduct'
 import ViewCategory from './ViewCategory'
 import { toast } from 'react-toastify'
 import Reg from './Reg'
-import useRefreshToken from '../hooks/useRefreshToken'
-import UseAxiosPrivate from '../hooks/useAxiosPrivate'
 
 
 const Index = () => {
@@ -53,12 +51,6 @@ const [categories, setCategories] = useState('');
 
 
 
-const axiosPrivate = UseAxiosPrivate();
-const refresh = useRefreshToken();
-
-
-
-
 const toastoptions = {
   autoclose: 400,
   pauseOnHover: true
@@ -69,83 +61,38 @@ const toastoptions = {
 
 
 
-// const fetchCategory = async () => {
-//   const results = await api.get('/category/')
-//   setCategories(await results.data);
-//  }
+const fetchCategory = async () => {
+  const results = await api.get('/category/')
+  setCategories(await results.data);
+ }
  
-//  useEffect(() =>{
-//  fetchCategory();
-//  }, [])
+ useEffect(() =>{
+ fetchCategory();
+ }, [])
  
 
 
 
 
-useEffect(() =>{ 
-  let isMounted = true;
-  const controller = new AbortController();
-  const getCategory = async () => {
-    try{
-      const res = await axiosPrivate.get('/category', {
-        signal: controller.signal
-      });
-      console.log(res.data)
-      isMounted && setCategories(res.data)
-  } catch (err) {
-    console.error(err)
+
+
+
+useEffect(() =>{
+  const fetchProducts = async () => {
+    setIsLoading(true);
+   const results = await api.get('/product/')
+   setProducts(await results.data);
+   setIsLoading(false);
   }
-}
-getCategory();
-return () => {
-  isMounted = false;
-  controller.abort();
-}
+
+  fetchProducts();
 }, [])
-
-
-
-
-// useEffect(() =>{
-//   const fetchProducts = async () => {
-//     setIsLoading(true);
-//    const results = await api.get('/product/')
-//    setProducts(await results.data);
-//    setIsLoading(false);
-//   }
-
-//   fetchProducts();
-// }, [])
-// // console.log(products)
-// const {data} = products;
+// console.log(products)
+const {data} = products;
 const navigate = useNavigate()
 
 
 //the test
-
-useEffect(() =>{
-  let isMounted = true;
-  const controller = new AbortController();
-  const getProducts = async () => {
-    try{
-      const res = await axiosPrivate.get('/product', {
-        signal: controller.signal
-      });
-      console.log(res.data)
-      isMounted && setProducts(res.data)
-  } catch (err) {
-    console.error(err)
-  }
-}
-getProducts();
-return () => {
-  isMounted = false;
-  controller.abort();
-}
-}, [])
-
-
-
 
 
 const handleSubmit= (e) => {
@@ -219,18 +166,22 @@ const handleDelete = async (id) => {
   return (
     <Layout >
     <Routes>
-    <Route path='/' element={<Login />} />
-    <Route path='/login' element={<Login />} />
-    
-    <Route path='/register' element={<Reg/>} />
+    <Route path='/' element={<Dashboard 
+     isLoading={isLoading} 
+     data={data}
+    />} />
     <Route path='/dashboard' element={<Dashboard 
      isLoading={isLoading} 
-     data={products}
+     data={data}
     />} />
+    <Route path='login' element={<Login />} />
+    
+    <Route path='/register' element={<Reg/>} />
+   
     <Route path='/logout' element={<Logout />} />
  
     <Route path='/product' element={<Product 
-    data={products} 
+    data={data} 
     isLoading={isLoading} 
     handleDelete={handleDelete} 
     handleEdit={handleEdit} 
@@ -246,10 +197,9 @@ const handleDelete = async (id) => {
     setProdImage={setProdImage}
     setProdName={setProdName}
     setProdPrice={setProdPrice}
-    refresh={refresh}
     />} />
     <Route  path='/allproducts' element={<AllProduct 
-    data={products} 
+    data={data} 
     isLoading={isLoading}  
     handleDelete={handleDelete} 
     handleEdit={handleEdit}
@@ -262,7 +212,7 @@ const handleDelete = async (id) => {
     <Route  path='/singleproduct' element={<SingleProduct data={products} />} />
     <Route  path='createproduct' element={
     <CreateProduct 
-    data={products}
+    data={data}
     setProducts={setProducts}
     categories={categories}
     setCategories={setCategories}
@@ -273,7 +223,7 @@ const handleDelete = async (id) => {
     />
     <Route path='/viewproduct/:id' element={
     <ViewProduct
-     data={products} 
+     data={data} 
     />} />
     <Route  path='/edit/:id' element={
     <EditPost 
@@ -290,7 +240,7 @@ const handleDelete = async (id) => {
     setEditProdImage={setEditProdImage}
     editProdCode={editProdCode}
     setEditProdCode={setEditProdCode}
-    data={products}
+    data={data}
     />} 
     />
 

@@ -10,9 +10,8 @@ const Product = (props) => {
 
   return (
     <div className='flex max-w-full '>
-      <div className="w- bg-gray-300 h-screen   justify-items-center items-center">
-        <button onClick={() => refresh()} > refresh here</button>
-        <SecondNav/>
+      <div className="items-center h-screen bg-gray-300 w- justify-items-center">
+          <SecondNav/>
       </div>
       <div className='w-full'>
       <AllProduct data={data} isLoading={isLoading}

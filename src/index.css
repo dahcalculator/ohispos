@@ -9,6 +9,12 @@
 }
 
 
+@font-face {
+   font-family: roboto ;
+   src: url('./img/Roboto-Medium.ttf');
+}
+
+
 
 
 
@@ -95,7 +101,7 @@
 
 
 body{
-   font-family: pos;
+   font-family: roboto;
 }
 
 body{

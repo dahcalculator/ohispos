@@ -25,32 +25,6 @@ const SideBar = () => {
     <Sidebaricon title='product' icon={<MdShoppingCart />} />
     </Link> 
  </li>
- <li className='li-sidebar'>
-    <Link to='/stock'>
-    <Sidebaricon title='stock' icon={<MdInventory />} />
-    </Link> 
- </li>
- <li className='li-sidebar'>
-    <Link to='/invoice'>
-    <Sidebaricon title='invoice' icon={<MdReceipt />} />
-    </Link> 
- </li>
-<li className='li-sidebar'>
-    <Link to='/report'>
-    <Sidebaricon title='report' icon={<MdReport />} />
-    </Link> 
- </li>
-
-<li>
-    <Link to='/users'>
-    <Sidebaricon title='users' icon={<MdAccountCircle />} />
-    </Link> 
- </li>
-<li>
-    <Link to='/settings'>
-    <Sidebaricon title='settings' icon={<MdSettings />} />
-    </Link> 
- </li>
 </ul>
   )
 }
@@ -59,7 +33,7 @@ const SideBar = () => {
 const Sidebaricon = ( {title, icon}) => {
   return(
   <div className="side-icon text-1xl">
-  <i className='text-primary text-2xl'>{icon}</i>
+  <i className='text-2xl text-primary'>{icon}</i>
   <span className="title ">
   {title}
   </span> 

@@ -8,30 +8,30 @@ import logo from '../img/logo.png'
 const Nav = (props) => {
 const{handle} = props;
   return (
-    <div className='text-3xl container h-24 w-full flex  items-center shadow-sm bg-white'>
+    <div className='container flex items-center w-full h-24 text-3xl bg-white shadow-sm'>
         <div className='w-full'>
             <Link to='/'>
-                    <img src={logo} className='w-18 h-20' alt='logo' />
+                    <img src={logo} className='h-20 w-18' alt='logo' />
             </Link>
         </div>
-        <ul className='capitalize flex gap-10 items-center  justify'>
-        <li  className='flex justify-center item-center text-4xl'>
+        <ul className='flex items-center gap-10 capitalize justify'>
+        <li  className='flex justify-center text-4xl item-center'>
                 <button onClick={handle.enter} className='hover:text-primary'>
                    <MdFullscreen/>
                 </button>
             </li>
-            <li className=' rounded-full border-2 hover:border-primary border-4  '>
+            <li className='border-2 border-4 rounded-full hover:border-primary'>
                 <Link to='/pos'>
                     pos
                 </Link>
             </li>
             <li className='hover:text-primary'>
-                <Link to='/notification'>
+                <Link to='/'>
                    <MdNotifications/>
                 </Link>
             </li>
             <li className='hover:text-primary' >
-                <Link to='/user'>
+                <Link to='/'>
                    <MdAccountCircle/>
                 </Link>
             </li>
