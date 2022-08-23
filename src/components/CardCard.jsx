@@ -4,18 +4,18 @@ const CardCard = ({ productName, amount, imgsrc, addTocart   }) => {
 
 
   return (
-    <div className='w-48 hover:scale-105 hover:border-2 hover:border-black h-60 duration-300  border-2 flex-col text-1xl rounded-lg  bg-white flex p-1 '>
-        <div className='h-full w-full '>
+    <div className='flex flex-col w-48 p-1 duration-300 bg-white border-2 rounded-lg hover:scale-105 hover:border-2 hover:border-black h-60 text-1xl '>
+        <div className='w-full h-full '>
         <img 
         src={imgsrc} 
         alt={productName}
-        className='object-cover h-38 w-96 '
+        className='object-cover h-40 w-38 '
         />
         </div>
-        <div className='w-full h-10  flex flex-wrap font-bold overflow-hidden'>
+        <div className='flex flex-wrap w-full h-10 overflow-hidden font-bold'>
         {productName}
         </div>
-        <div className='w-fit h-10 flex text-xm  font-semibold rounded-sm bg-primary text-white p-1 '>
+        <div className='flex h-10 p-1 font-semibold text-white rounded-sm w-fit text-xm bg-primary '>
           price: {amount}
         </div>
         

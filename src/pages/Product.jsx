@@ -3,7 +3,7 @@ import SecondNav from '../components/SecondNav'
 import AllProduct from './AllProduct'
 
 const Product = (props) => {
-  const {isLoading, data, handleDelete, handleEdit, refresh
+  const {isLoading, data, handleDelete, handleEdit
   } = props;
   
 

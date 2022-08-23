@@ -163,7 +163,7 @@ const handleSubmit= (e) => {
              </tr>
              {isLoading ?
 
-      'loading'
+      <div className="loading"></div>
              :
              <>
               {data?.filter((val) => {
