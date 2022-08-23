@@ -8,9 +8,13 @@ import Category from '../components/Category';
 
 
 const Pos = ( props ) => {
-  const {products } = props;
+  const {data, products} = props;
+
   const [cartItems, setCartItems] = useState([]);
- 
+  const qty = 1;
+
+
+  console.log(products) 
 
 const toastoptions = {
     autoclose: 400,
@@ -69,34 +73,13 @@ const onCancel = (prod) =>{
 
 
   const [searchTerm, setSearchTerm] = useState('');
-
-  const [searchBarcode, setSearchBarcode] = useState("");
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    setResults(products);
-  }, []);
-
-
-
-  const filterBarcode = results.filter((val) => {
-    if (searchBarcode === "") {
-       return val
-    } else if(val.barcode === searchBarcode){
-    return val
-    }
-  });
-
-  const searchBar = filterBarcode.map((item)=> {
-  } )
-
-
+  
 
  
 
   return (
-    <div className='flex capitalize  gap-4 mx-3 '>
-      <div className='h-full shadow-xl border-1 gap-2 w-full flex flex-col justify-between rounded-xl p-5'>
+    <div className='flex gap-4 mx-3 capitalize '>
+      <div className='flex flex-col justify-between w-full h-full gap-2 p-5 shadow-xl border-1 rounded-xl'>
        <div style={{display: 'none'}}>
          <ComponentToPrint
          ref={componentRef}
@@ -108,20 +91,9 @@ const onCancel = (prod) =>{
 
        <div className='h- '>
   
-     {cartItems.length === 0 && <span className='text-3xl font-bold text-red-600
-     '> cart is empty </span>}
+     {cartItems.length === 0 && <span className='text-3xl font-bold text-red-600 '> cart is empty </span>}
 
-     <div className=' w-full h-12 rounded-lg flex border-2  items-center shadow-md  '>
-        <MdSearch className='text-3xl'/>
-        <input className='outline-0 w-full h-10 pl-2 border-1   capitalize focus:border-3' 
-        autoFocus
-            type="text"
-            placeholder="Search barcode"
-            onChange={(e) => setSearchBarcode(e.target.value)}
-          
-        />
-      </div>
-       <table className='items-center shadow-md border-3  text-xl  border-collapse text-color-black flex-warp rounded-lg w-full' style={{width:'100%'}}>
+       <table className='items-center w-full text-xl border-collapse rounded-lg shadow-md border-3 text-color-black flex-warp' style={{width:'100%'}}>
   <tr>
   <th>
     product
@@ -138,7 +110,7 @@ const onCancel = (prod) =>{
   </tr>
   
   <tbody>
-  {cartItems.map((item) => (
+  {cartItems?.map((item) => (
    
   <tr key={item.id}>
     <td>
@@ -147,8 +119,8 @@ const onCancel = (prod) =>{
     <td>
       N {item.price.toFixed(2)}
     </td>
-    <td className='flex items-center  gap-5 '>
-      <span className='bg-red-500 rounded-xl text-white'> 
+    <td className='flex items-center gap-5 '>
+      <span className='text-white bg-red-500 rounded-xl'> 
       <MdRemoveCircle 
        onClick={()=>onRemove(item)}
       /> 
@@ -156,14 +128,14 @@ const onCancel = (prod) =>{
 
       <span> {item.qty}</span>
 
-      <span  className='bg-green-500 rounded-xl text-white'>
+      <span  className='text-white bg-green-500 rounded-xl'>
       <MdAddCircle
        onClick={()=>onAdd(item)}
       /></span>
     </td>
   
     <td>
-    <span className='bg-red-500 rounded-full  text-red-500 text-4xl'> <MdCancel
+    <span className='text-4xl text-red-500 bg-red-500 rounded-full'> <MdCancel
      onClick={()=>onCancel(item)}
     /></span>
     </td>   
@@ -175,7 +147,7 @@ const onCancel = (prod) =>{
       </div>
 
      
-       <div className='h-10 flex items-center capitalize text-2xl bg-gray-200 '>
+       <div className='flex items-center h-10 text-2xl capitalize bg-gray-200 '>
          
       Grand total: N
       {cartItems.length !== 0 &&(
@@ -185,19 +157,19 @@ const onCancel = (prod) =>{
       )}
       </div>
     <div>
-      <button className='rounded-lg bg-green-400  border-3 w-40 shadow text-xl font-semibold h-12 p-1 text-white capitalize hover:text-white' onClick={handlePrint}> pay now</button>
+      <button className='w-40 h-12 p-1 text-xl font-semibold text-white capitalize bg-green-400 rounded-lg shadow border-3 hover:text-white' onClick={handlePrint}> pay now</button>
       </div>
       </div>
-      <div className='w-full h-full flex flex-col gap-2 flex-wrap shadow-md border-2 rounded-xl p-2 '>
-       <div className='h-10 w-full text-white flex items-center pl-1 text-md gap-2'>
+      <div className='flex flex-col flex-wrap w-full h-full gap-2 p-2 border-2 shadow-md rounded-xl '>
+       <div className='flex items-center w-full h-10 gap-2 pl-1 text-white text-md'>
         <Category/>
         </div> 
-        <div className='w-full h-12    flex items-center flex-wrap'>
-        <div className=' w-full h-12 rounded-lg flex border-2  items-center shadow-md  '>
+        <div className='flex flex-wrap items-center w-full h-12'>
+        <div className='flex items-center w-full h-12 border-2 rounded-lg shadow-md '>
          
         <MdSearch className='text-3xl'/>
         
-        <input className='outline-0 w-full h-10 pl-2 border-1   capitalize focus:border-3' 
+        <input className='w-full h-10 pl-2 capitalize outline-0 border-1 focus:border-3' 
         autofocus
         onmouseover='this.focus()'
         onAdd={onAdd}
@@ -208,15 +180,10 @@ const onCancel = (prod) =>{
         }}
         />
       </div>
-      
-      
-
-
       </div>
       <div className=''>
-      <ul className=' flex-wrap flex overflow-y-scroll  h-96  gap-4  items-center  p-1'>
- 
-      {products.filter((val) => {
+
+      {products.data?.filter((val) => {
           if (searchTerm === "") {
             return val
           }else  if(val.name.toLowerCase().includes(searchTerm.toLowerCase())){
@@ -227,18 +194,23 @@ const onCancel = (prod) =>{
 
         }).map((prod) => 
          (
+
+      <ul className='flex flex-wrap items-center gap-4 p-1 overflow-y-scroll h-1/2'>
+ 
+    
         <li key={prod.id}   onClick={()=>onAdd(prod)} >
          
           <CardCard  
-           imgsrc={prod.img}
+           imgsrc={prod.image}
           amount={prod.price} 
           productName={prod.name}
           addTocart={`add to cart`}
           />
         </li>
         
-        ))} 
+       
       </ul>
+       ))} 
 
       </div>
     </div>

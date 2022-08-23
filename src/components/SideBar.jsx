@@ -7,9 +7,10 @@ const SideBar = () => {
 
   return (
     
-     <ul className='pt-4 h-full fixed'>
+     <ul className='pt-4 w-44 h-full fixed oscroll-behavior-smooth;
+     overflow-x-scroll '>
 
-<li className='li-sidebar'>
+<li className='li-sidebar '>
     <Link to='/dashboard'>
     <Sidebaricon 
    
@@ -18,6 +19,7 @@ const SideBar = () => {
     />
     </Link> 
  </li>
+ 
 <li className='li-sidebar'>
     <Link to='/product'>
     <Sidebaricon title='product' icon={<MdShoppingCart />} />
@@ -56,9 +58,9 @@ const SideBar = () => {
 
 const Sidebaricon = ( {title, icon}) => {
   return(
-  <div className="side-icon  text-1xl">
-  <i className='text-primary text-4xl'>{icon}</i>
-  <span className="title">
+  <div className="side-icon text-1xl">
+  <i className='text-primary text-2xl'>{icon}</i>
+  <span className="title ">
   {title}
   </span> 
   </div>

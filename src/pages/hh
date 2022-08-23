@@ -1,11 +1,79 @@
-import React from 'react'
+
+
+const handlesubmit=(e) => {
+var myHeaders = new Headers();
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Authorization", "Bearer 6|njvRDzgitMKpUMFDTKZDhIfdofEchrgfJ4rxI0kt");
+
+var data = new FormData();
+data.append('name', 'prodName');
+data.append('code', 'prodCode');
+data.append('barcode', 'prodBarcode');
+data.append('price', 'prodPrice');
+data.append('category', 'prodCategory');
+data.append('image', 'prodImage');
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: data,
+  redirect: 'follow'
+};
+
+fetch("http://ohisstores.pgis.org.ng/api/stock", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+}
+
+
+var myHeaders = new Headers();
+myHeaders.append("Accept", "application/json");
+myHeaders.append("Authorization", "Bearer 6|njvRDzgitMKpUMFDTKZDhIfdofEchrgfJ4rxI0kt");
+
+var formdata = new FormData();
+formdata.append("name", "assaaaasaaax");
+formdata.append("code", "3777222");
+formdata.append("barcode", "22388222");
+formdata.append("price", "3334");
+formdata.append("category", "cloths");
+formdata.append("image", fileInput.files[0], "/C:/Users/DELL/Pictures/MEmu Photo/Screenshots/Screenshot_20220617-203722.png");
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://ohisstores.pgis.org.ng/api/product", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  import React from 'react'
 import { useState } from 'react';
 import api from '../components/axios'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import * as FormData from 'form-data'
-import { FileUploader } from "react-drag-drop-files";
-const fileTypes = ["JPG", "PNG", "GIF"];
 
 const CreateProduct = (props) => {
 const { categories} = props
@@ -14,12 +82,9 @@ const [prodCode, setProdCode] = useState('');
 const [prodBarcode, setProdBarcode] = useState('');
 const [prodCategory, setProdCategory] = useState('');
 const [prodPrice, setProdPrice] = useState('');
-const [prodQuantity, setProdQuantity] = useState('');
+const [prodImage, setProdImage] = useState('');
 
-const [prodImage, setProdImage] = useState(null);
-const handleChange = (prodImage) => {
-    setProdImage(prodImage);
-  };
+
 
 
 
@@ -27,21 +92,21 @@ const navigate = useNavigate();
 
 const handleSubmit= (e) => {
   var myHeaders = new Headers();
-myHeaders.append("Accept", "application/json");
-myHeaders.append("Authorization", "Bearer 6|njvRDzgitMKpUMFDTKZDhIfdofEchrgfJ4rxI0kt");
-myHeaders.append("Cookie", "XSRF-TOKEN=eyJpdiI6Im5aQWQ5MURySHRyYXZXWlRFc1pMc0E9PSIsInZhbHVlIjoiZ2RlK0J6cHNJaXVXYUlZcEtLUFlYem5rbEZXT0lLdkd1RE9sREZiTUsrOFBaaWRFWnNrQ3hCYmFpTm1VZGNFTDdFUk5WeGhmSTZwRFlsbk1JTDBHWXNIN1JjSkpkc0tHNHk0M1E2R3hjVmNVS0M1N1dCVGtuTi9GVW1yc2dQcnIiLCJtYWMiOiIzY2FhMWU0MmY0MTdjNmMzNjcxYzI0ZDIyNjFiYzc5YTBhN2JjOWE1MzU1ODUxOTU4ZDBmZWYzZGQ0MDI4Zjk4IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjJrZlNnbWhDOFBDNkZVNXNKSVpXNUE9PSIsInZhbHVlIjoiYnN4RlBwTHN1eThHdHAvREJENUFhSGZ1dFlrTjVkc2ZOdlVOREwxN1VIdGtuME1wYjNjYXF6TnZmbEp0RWRsdlpnNnViaUdrV3lWZTJNek9KRnZ2ZjgzV3BMeUU2SEtJaGkyTUJIdmp2T0EzMTdpb0Nhd1Vqc0M1R3hLeFlRL0MiLCJtYWMiOiI0NWRhODE0OWNiMGI4NTVmMjAyMTVkZDFjMzc2ZWRkMWJmMzI1ZmMwM2U2YjgxNTkyNmMzZDg4MzMyYzZhOTM5IiwidGFnIjoiIn0%3D");
-  const data = new FormData(); 
-       data.append('name', 'prodName');
-       data.append('code', 'prodCode');
-       data.append('barcode', 'prodBarcode');
-       data.append('price', 'prodPrice');
-       data.append('category', 'prodCategory');
-       data.append('image', 'prodImage');
-       data.append('quantity', 'prodQuantity');
+  myHeaders.append("Accept", "application/json");
+  myHeaders.append("Authorization", "Bearer 6|njvRDzgitMKpUMFDTKZDhIfdofEchrgfJ4rxI0kt");
+  
+  const newProduct = {
+    name: prodName,
+    code: prodCode,
+    barcode: prodBarcode,
+    price: prodPrice,
+    category: prodCategory,
+    image: prodImage
+      };
   var requestOptions = {
     method: 'POST',
     headers: myHeaders,
-    body: JSON.stringify(data),
+    body: JSON.stringify(newProduct),
     redirect: 'follow'
   };
   
@@ -174,7 +239,7 @@ myHeaders.append("Cookie", "XSRF-TOKEN=eyJpdiI6Im5aQWQ5MURySHRyYXZXWlRFc1pMc0E9P
   return (
     
       <div className="products flex m-0">
-      <form  onClick={handleSubmit}   className='productForm capitalize text-md font-semibold  w-full rounded' >
+      <form onClick={handleSubmit}   className='productForm capitalize text-md font-semibold  w-full rounded' >
            <div className="divider flex w-full gap-1 m-2 ">
             <div className='forminfo'>
 
@@ -236,13 +301,7 @@ myHeaders.append("Cookie", "XSRF-TOKEN=eyJpdiI6Im5aQWQ5MURySHRyYXZXWlRFc1pMc0E9P
              onChange={(e) => setProdPrice(e.target.value)}
              />
              </div>
-             <div className="col">
-             <label htmlFor="name">quantity</label> 
-             <input className='formInput' type="number" name="quantity" id="quantity"
-             value={prodQuantity}
-             onChange={(e) => setProdQuantity(e.target.value)}
-             />
-             </div>
+
             
             </div>
 
@@ -257,8 +316,12 @@ myHeaders.append("Cookie", "XSRF-TOKEN=eyJpdiI6Im5aQWQ5MURySHRyYXZXWlRFc1pMc0E9P
               <div className='cProductImg w-72 h-60 shadow-md rounded-xl flex flex-col justify-center text-center items-center '>
               
               <div>
-              <FileUploader handleChange={handleChange} name="file" types={fileTypes} />
-
+              <input placeholder='add image here' type="file" name="" id=""  className=' m-4 w-full flex items-center  text-xs' 
+               DefaultValue={prodImage}
+              onChange={(e) => setProdImage(e.target.files[0])}
+                
+              />
+                
               </div>
               </div>
               </div>
@@ -272,3 +335,121 @@ myHeaders.append("Cookie", "XSRF-TOKEN=eyJpdiI6Im5aQWQ5MURySHRyYXZXWlRFc1pMc0E9P
 }
 
 export default CreateProduct
+
+
+
+
+
+
+
+
+
+
+
+var axios = require('axios');
+var FormData = require('form-data');
+var fs = require('fs');
+var data = new FormData();
+data.append('name', 'jude1');
+data.append('code', '3777222');
+data.append('barcode', '22388222');
+data.append('price', '3334');
+data.append('category', 'cloths');
+data.append('image', fs.createReadStream('/C:/Users/DELL/Pictures/MEmu Photo/Screenshots/Screenshot_20220617-203722.png'));
+data.append('quantity', '44');
+
+var config = {
+  method: 'post',
+  url: 'http://ohisstores.pgis.org.ng/api/product',
+  headers: { 
+    'Accept': 'application/json', 
+    'Authorization': 'Bearer 6|njvRDzgitMKpUMFDTKZDhIfdofEchrgfJ4rxI0kt', 
+    'Cookie': 'XSRF-TOKEN=eyJpdiI6Im5aQWQ5MURySHRyYXZXWlRFc1pMc0E9PSIsInZhbHVlIjoiZ2RlK0J6cHNJaXVXYUlZcEtLUFlYem5rbEZXT0lLdkd1RE9sREZiTUsrOFBaaWRFWnNrQ3hCYmFpTm1VZGNFTDdFUk5WeGhmSTZwRFlsbk1JTDBHWXNIN1JjSkpkc0tHNHk0M1E2R3hjVmNVS0M1N1dCVGtuTi9GVW1yc2dQcnIiLCJtYWMiOiIzY2FhMWU0MmY0MTdjNmMzNjcxYzI0ZDIyNjFiYzc5YTBhN2JjOWE1MzU1ODUxOTU4ZDBmZWYzZGQ0MDI4Zjk4IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IjJrZlNnbWhDOFBDNkZVNXNKSVpXNUE9PSIsInZhbHVlIjoiYnN4RlBwTHN1eThHdHAvREJENUFhSGZ1dFlrTjVkc2ZOdlVOREwxN1VIdGtuME1wYjNjYXF6TnZmbEp0RWRsdlpnNnViaUdrV3lWZTJNek9KRnZ2ZjgzV3BMeUU2SEtJaGkyTUJIdmp2T0EzMTdpb0Nhd1Vqc0M1R3hLeFlRL0MiLCJtYWMiOiI0NWRhODE0OWNiMGI4NTVmMjAyMTVkZDFjMzc2ZWRkMWJmMzI1ZmMwM2U2YjgxNTkyNmMzZDg4MzMyYzZhOTM5IiwidGFnIjoiIn0%3D', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import {axiosPrivate} from '../components/axios';
+import  useRefreshToken from './useRefreshToken';
+import { useEffect } from 'react';
+import useAuth from './useAuth';
+
+
+const useAxiosPrivate = () => {
+
+  const refresh = useRefreshToken();
+  const {auth} = useAuth();
+
+  useEffect(() =>{
+      const requestIntercept = axiosPrivate.interceptors.request.use( 
+          config =>{
+              if(!config.headers['Authorization']){
+                  config.headers['Authorization'] = `Bearer ${auth?.token}` 
+              }
+              return config;
+          }, (error) => Promise.reject(error)
+      );
+
+      const responseIntercept = axiosPrivate.interceptor.response.use(
+          response =>  response,
+          async(error) => {
+              const prevRequest = error?.config;
+              if(error?.response?.status === 403 && !prevRequest?.sent){
+                  prevRequest.sent = true;
+                  const newToken  = await refresh();
+                  prevRequest.headers['Authorization'] = `Bearer ${newToken}`;
+                  return axiosPrivate(prevRequest);
+                   
+              }
+              return Promise.reject(error);
+          }
+
+      );
+      return () => {
+          axiosPrivate.interceptors.request.eject(requestIntercept);
+          axiosPrivate.interceptors.response.eject(responseIntercept);
+      }
+
+  }, [auth, refresh])
+
+  return  axiosPrivate;
+}
+
+export default useAxiosPrivate

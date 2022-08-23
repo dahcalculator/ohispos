@@ -2,7 +2,7 @@ import React from 'react'
 
 const ErrorPage = () => {
   return (
-    <div>404</div>
+    <div className='flex items-center jsutify-center w-full h-full m-10'>404</div>
   )
 }
 

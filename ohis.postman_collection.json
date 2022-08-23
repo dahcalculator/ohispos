@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "9ed7f9d8-c90e-4655-af96-dfafbb7528f8",
-		"name": "ohis",
+		"name": "ohispos",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -30,13 +30,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/product",
+							"raw": "http://ohisstores.pgis.org.ng/api/product",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+
 							],
 							"port": "8000",
 							"path": [
@@ -70,7 +67,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/1",
+							"raw": "http://ohisstores.pgis.org.ng/api/product/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -141,7 +138,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/product",
+							"raw": "http://ohisstores.pgis.org.ng/api/product",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -165,7 +162,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/product",
+							"raw": "http://ohisstores.pgis.org.ng/api/product",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -189,7 +186,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/product",
+							"raw": "http://ohisstores.pgis.org.ng/api/product",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -213,7 +210,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/product/search/6",
+							"raw": "http://ohisstores.pgis.org.ng/api/product/search/6",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -244,7 +241,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category",
+							"raw": "http://ohisstores.pgis.org.ng/api/category",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -284,7 +281,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category/2",
+							"raw": "http://ohisstores.pgis.org.ng/api/category/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -313,7 +310,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category",
+							"raw": "http://ohisstores.pgis.org.ng/api/category",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -337,7 +334,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category",
+							"raw": "http://ohisstores.pgis.org.ng/api/category",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -361,7 +358,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category",
+							"raw": "http://ohisstores.pgis.org.ng/api/category",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -385,7 +382,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/category",
+							"raw": "http://ohisstores.pgis.org.ng/api/category",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -437,7 +434,7 @@
 							"urlencoded": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/stock",
+							"raw": "http://ohisstores.pgis.org.ng/api/stock",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -476,7 +473,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/stock/1",
+							"raw": "http://ohisstores.pgis.org.ng/api/stock/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -515,7 +512,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/stock/",
+							"raw": "http://ohisstores.pgis.org.ng/api/stock/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -555,7 +552,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/order",
+							"raw": "http://ohisstores.pgis.org.ng/api/order",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -593,7 +590,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/order",
+							"raw": "http://ohisstores.pgis.org.ng/api/order",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -637,7 +634,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/sales/",
+							"raw": "http://ohisstores.pgis.org.ng/api/sales/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -683,7 +680,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/sales",
+							"raw": "http://ohisstores.pgis.org.ng/api/sales",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -712,7 +709,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/sales/day/day",
+							"raw": "http://ohisstores.pgis.org.ng/api/sales/day/day",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -743,7 +740,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/sales/month/month",
+							"raw": "http://ohisstores.pgis.org.ng/api/sales/month/month",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -784,7 +781,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/sales/year/year",
+							"raw": "http://ohisstores.pgis.org.ng/api/sales/year/year",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -845,7 +842,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/register",
+							"raw": "http://ohisstores.pgis.org.ng/api/register",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -901,7 +898,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/login",
+							"raw": "http://ohisstores.pgis.org.ng/api/login",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -977,7 +974,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/logout",
+							"raw": "http://ohisstores.pgis.org.ng/api/logout",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -1041,7 +1038,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/logout",
+							"raw": "http://ohisstores.pgis.org.ng/api/logout",
 							"protocol": "http",
 							"host": [
 								"127",
