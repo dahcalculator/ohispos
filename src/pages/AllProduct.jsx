@@ -114,13 +114,15 @@ const handleSubmit= (e) => {
 
     return (
         
-      <div className='flex flex-col h-full max-w-full  my-6 mx-6 gap-4 capitalize text-xl'>
+      <div className='flex flex-col h-full max-w-full gap-4 mx-6 my-6 text-xl capitalize'>
      
-      <div className=' flex'>
+      <div className='flex '>
       all product
      </div>
-      <div className=' rounded-lg flex border-2  items-center shadow-md  h-12 w-64 '>
-        <MdSearch className='text-3xl text-primary bg-white font-bold'/>
+     <div className='flex items-center justify-between w-full p-4 rounded-lg h-14'>
+    
+      <div className='flex items-center w-64 h-12 border-2 rounded-lg shadow-md '>
+        <MdSearch className='text-3xl font-bold bg-white text-primary'/>
         <input 
         type="search" 
         placeholder='search here...' 
@@ -133,7 +135,7 @@ const handleSubmit= (e) => {
         />
      </div>
 
-     <button className=' border-b-2 uppercase font-bold bg-orange-400 hover:bg-primary text-white rounded-md cursor-pointer p-4 w-34 justify-center flex h-14 '>
+     <button className='flex justify-center p-4 font-bold text-white uppercase bg-orange-400 border-b-2 rounded-md cursor-pointer hover:bg-primary w-34 h-14'>
       <button onClick={() => setModalIsOpen(true)}>
             create
        </button>
@@ -162,16 +164,16 @@ const handleSubmit= (e) => {
             }
         }}
         >
-        <div className='w-full h-full flex items-center flex-col  '>
-        <div className='w-full flex justify-around mb-4 mt-2 capitalize text-2xl font-bold'>  
+        <div className='flex flex-col items-center w-full h-full '>
+        <div className='flex justify-around w-full mt-2 mb-4 text-2xl font-bold capitalize'>  
           <div>create</div> 
-          <button className='font-bold rounded-full shadow-md p-1 w-20 capitalize hover:bg-primary h-fit bg-orange-400 text-white' onClick={() => setModalIsOpen(false)}>
+          <button className='w-20 p-1 font-bold text-white capitalize bg-orange-400 rounded-full shadow-md hover:bg-primary h-fit' onClick={() => setModalIsOpen(false)}>
             close
        </button>
         </div>
         <div> 
-        <form onClick={handleSubmit}   className='productForm capitalize text-md font-semibold  w-full rounded' >
-           <div className="divider flex w-full gap-1 m-2 ">
+        <form onClick={handleSubmit}   className='w-full font-semibold capitalize rounded productForm text-md' >
+           <div className="flex w-full gap-1 m-2 divider ">
             <div className='forminfo'>
 
        
@@ -245,17 +247,17 @@ const handleSubmit= (e) => {
 
 
              <br />
-             <button className='formInput bg-orange-400 hover:bg-primary' type="submit"  
+             <button className='bg-orange-400 formInput hover:bg-primary' type="submit"  
              >
               Add
              </button>
               
               </div>
-              <div className='cProductImg w-72 h-60 shadow-md rounded-xl flex flex-col justify-center text-center items-center '>
+              <div className='flex flex-col items-center justify-center text-center shadow-md cProductImg w-72 h-60 rounded-xl '>
               
               <div>
              
-              <FileUploader handleChange={handleChange} name="image" types={fileTypes} />
+              <FileUploader handleChange={handleChange} name="image" types={fileTypes}  className='w-20'/>
   
               </div>
               </div>
@@ -267,15 +269,15 @@ const handleSubmit= (e) => {
        </Modal>
 
         </button>
+        </div>
 
 
-
-     <div className=' flex justify-around items-center  '>
+     <div className='flex items-center justify-around '>
  
     
      </div>
-     <div className='justify-around items-center  border-2 shadow-xl flex-wrap'>
-         <table className=' border-3  border-collapse text-color-black flex-warp rounded-lg' style={{width:'100%'}}>
+     <div className='flex-wrap items-center justify-around border-2 shadow-xl'>
+         <table className='border-collapse rounded-lg border-3 text-color-black flex-warp' style={{width:'100%'}}>
              <tr>
              <th>
                code
