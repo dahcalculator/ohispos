@@ -4,7 +4,6 @@ import api from '../components/axios'
 import SingleCategory from './SingleCategory'
 import { useNavigate } from 'react-router-dom'
 import Modal from 'react-modal'
-import EditCate from './EditCate'
 import { toast } from 'react-toastify'
 Modal.setAppElement('#root')
 
@@ -19,11 +18,7 @@ const Categories = ({title ='category'}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [cateName, setCateName] = useState('');
   const [cateCode, setCateCode] = useState('');
-
-  const [editCateName, setEditCateName] = useState('');
-  const [editCateCode, setEditCateCode] = useState('');
-
-  const toastoptions = {
+const toastoptions = {
     autoclose: 400,
     pauseOnHover: true
   }

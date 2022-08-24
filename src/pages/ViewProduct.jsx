@@ -3,10 +3,10 @@ import {MdDetails} from 'react-icons/md'
 import { useParams } from 'react-router-dom';
 
 const ViewProduct = (props) => {
-   const {data} = props;
+   const {products} = props;
 
    const { id } = useParams();
-   const prod = data.find(prod => (prod.id).toString() === id);
+   const prod = products.find(prod => (prod.id).toString() === id);
 
 
   return (

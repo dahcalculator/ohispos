@@ -10,11 +10,6 @@ const SecondNav = () => {
                   products
                </Link>
            </li>
-           <li className='secondNav-li w-40'>
-               <Link to='/createproduct' >
-                   Create Product
-               </Link>
-           </li>
            <li className='secondNav-li'>
                <Link to='/categories' >
                    Categories

@@ -3,7 +3,7 @@ import SecondNav from '../components/SecondNav'
 import AllProduct from './AllProduct'
 
 const Product = (props) => {
-  const {isLoading, data, handleDelete, handleEdit
+  const {isLoading, products, handleDelete, handleEdit
   } = props;
   
 
@@ -14,7 +14,7 @@ const Product = (props) => {
           <SecondNav/>
       </div>
       <div className='w-full'>
-      <AllProduct data={data} isLoading={isLoading}
+      <AllProduct products={products} isLoading={isLoading}
       handleDelete={handleDelete}
       handleEdit={handleEdit}
       />

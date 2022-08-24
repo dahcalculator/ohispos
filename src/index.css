@@ -1,3 +1,49 @@
+  @page {
+    size: 80mm 50mm;
+  }
+
+  @media all {
+    .pagebreak {
+      display: none;
+    }
+  }
+
+  @media print {
+    .pagebreak {
+      page-break-before: always;
+    }
+  }
+
+
+
+  @media all {
+   .page-break {
+     display: none;
+   }
+ }
+ 
+ @media print {
+   html, body {
+     height: initial !important;
+     overflow: initial !important;
+     -webkit-print-color-adjust: exact;
+   }
+ }
+ 
+ @media print {
+   .page-break {
+     margin-top: 1rem;
+     display: block;
+     page-break-before: auto;
+   }
+ }
+ 
+ @page {
+   size: auto;
+   margin: 20mm;
+ }
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,7 +62,7 @@
 
 
 
-.loading, .loading:before, .loader:after {
+.load, .loading:before, .loading:after {
    border-radius: 50%;
    width: 2.5em;
    height: 2.5em;

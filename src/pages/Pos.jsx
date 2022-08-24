@@ -5,13 +5,23 @@ import { useState, useRef, useEffect } from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { ComponentToPrint } from '../components/ComponentToPrint';
 import Category from '../components/Category';
+import api from '../components/axios'
 
 
 const Pos = ( props ) => {
-  const {data, products} = props;
+const [products, setProducts] = useState([])
+const [cartItems, setCartItems] = useState([]);
 
-  const [cartItems, setCartItems] = useState([]);
-  const qty = 1;
+  const fetchProduct = async () => {
+   const results = await api.get('/product/')
+   setProducts(await results.data);
+  }
+
+useEffect(() =>{
+  fetchProduct();
+}, [])
+
+
 
 
   console.log(products) 
@@ -26,12 +36,12 @@ const toastoptions = {
     if(exist) {
       setCartItems(
         cartItems.map((x) =>
-        x.id === prod.id ? { ...exist, qty: exist.qty + 1} : x
+        x.id === prod.id ? { ...exist, quantity: exist.quantity + 1} : x
       ));
       
     toast(`Added ${prod.name} to cart`, toastoptions)
   } else{
-    setCartItems([...cartItems, { ...prod, qty:1 }]);
+    setCartItems([...cartItems, { ...prod, quantity:1 }]);
     toast(`Added ${prod.name} to cart`, toastoptions)
   }
 };
@@ -40,13 +50,13 @@ const toastoptions = {
 
 const onRemove = (prod) =>{
   const exist = cartItems.find((x) => x.id=== prod.id);
-  if(exist.qty === 1) {
+  if(exist.quantity === 1) {
     setCartItems(cartItems.filter((x) => x.id !== prod.id));
     toast(`Removed ${prod.name} from cart`, toastoptions)
   } else{
     setCartItems(
       cartItems.map((x) =>
-      x.id === prod.id ? { ...exist, qty: exist.qty - 1} : x
+      x.id === prod.id ? { ...exist, quantity: exist.quantity - 1} : x
     ));
     toast(`Removed ${prod.name} from cart, toastoptions`)
   } 
@@ -62,7 +72,7 @@ const onCancel = (prod) =>{
   } 
 
 
-  const itemsPrice = cartItems.reduce((a, c) => a+ c.price * c.qty, 0);
+  const itemsPrice = cartItems.reduce((a, c) => a+ c.price * c.quantity, 0);
   const grandPrice = itemsPrice;
 
 
@@ -110,14 +120,14 @@ const onCancel = (prod) =>{
   </tr>
   
   <tbody>
-  {cartItems?.map((item) => (
+  {cartItems.map((item) => (
    
   <tr key={item.id}>
     <td>
       {item.name}
     </td>
     <td>
-      N {item.price.toFixed(2)}
+      N {item.price}
     </td>
     <td className='flex items-center gap-5 '>
       <span className='text-white bg-red-500 rounded-xl'> 
@@ -126,7 +136,7 @@ const onCancel = (prod) =>{
       /> 
       </span>
 
-      <span> {item.qty}</span>
+      <span> {item.quantity}</span>
 
       <span  className='text-white bg-green-500 rounded-xl'>
       <MdAddCircle
@@ -183,7 +193,7 @@ const onCancel = (prod) =>{
       </div>
       <div className=''>
 
-      {products.data?.filter((val) => {
+      {products?.filter((val) => {
           if (searchTerm === "") {
             return val
           }else  if(val.name.toLowerCase().includes(searchTerm.toLowerCase())){
@@ -195,7 +205,7 @@ const onCancel = (prod) =>{
         }).map((prod) => 
          (
 
-      <ul className='flex flex-wrap items-center gap-4 p-1 overflow-y-scroll h-1/2'>
+      <ul className='w-full flex flex-wrap items-center gap-4 p-1 overflow-y-scroll h-96'>
  
     
         <li key={prod.id}   onClick={()=>onAdd(prod)} >

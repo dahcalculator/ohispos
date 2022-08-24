@@ -71,24 +71,22 @@ const fetchCategory = async () => {
  }, [])
  
 
-
-
-
-
+ const fetchProducts = async () => {
+  setIsLoading(true);
+ const results = await api.get('/product/')
+ setProducts(await results.data);
+ setIsLoading(false);
+}
 
 
 useEffect(() =>{
-  const fetchProducts = async () => {
-    setIsLoading(true);
-   const results = await api.get('/product/')
-   setProducts(await results.data);
-   setIsLoading(false);
-  }
-
+  
   fetchProducts();
 }, [])
-// console.log(products)
-const {data} = products;
+
+
+
+
 const navigate = useNavigate()
 
 
@@ -168,11 +166,11 @@ const handleDelete = async (id) => {
     <Routes>
     <Route path='/' element={<Dashboard 
      isLoading={isLoading} 
-     data={data}
+     products={products}
     />} />
     <Route path='/dashboard' element={<Dashboard 
      isLoading={isLoading} 
-     data={data}
+     products={products}
     />} />
     <Route path='login' element={<Login />} />
     
@@ -181,7 +179,7 @@ const handleDelete = async (id) => {
     <Route path='/logout' element={<Logout />} />
  
     <Route path='/product' element={<Product 
-    data={data} 
+    products={products} 
     isLoading={isLoading} 
     handleDelete={handleDelete} 
     handleEdit={handleEdit} 
@@ -199,20 +197,19 @@ const handleDelete = async (id) => {
     setProdPrice={setProdPrice}
     />} />
     <Route  path='/allproducts' element={<AllProduct 
-    data={data} 
+    products={products} 
     isLoading={isLoading}  
     handleDelete={handleDelete} 
     handleEdit={handleEdit}
     setProducts={setProducts}
     categories={categories}
     setCategories={setCategories}
-    products={products}
     />}
     />
     <Route  path='/singleproduct' element={<SingleProduct data={products} />} />
     <Route  path='createproduct' element={
     <CreateProduct 
-    data={data}
+    products={products}
     setProducts={setProducts}
     categories={categories}
     setCategories={setCategories}
@@ -223,31 +220,16 @@ const handleDelete = async (id) => {
     />
     <Route path='/viewproduct/:id' element={
     <ViewProduct
-     data={data} 
+    products={products} 
     />} />
     <Route  path='/edit/:id' element={
     <EditPost 
-    handleEdit={handleEdit}
-    editProdBarcode={editProdBarcode}
-    setProdBarcode={setEditProdBarcode}
-    editProdCategory={editProdCategory}
-    setEditProdCategory={setEditProdCategory}
-    editProdName={editProdName}
-    setEditProdName={setEditProdName}
-    editProdPrice={editProdPrice}
-    setEditProdPrice={setEditProdPrice}
-    editProdImage={editProdImage}
-    setEditProdImage={setEditProdImage}
-    editProdCode={editProdCode}
-    setEditProdCode={setEditProdCode}
-    data={data}
+    products={products}
     />} 
     />
 
     <Route path="/categories" element={<Cate isLoading={isLoading} />} />
-    <Route path='/editcategory/:id' 
-    element={<EditCate />}
-    />
+   
     <Route path='/viewcategory/:id' element={<ViewCategory 
     categories={categories}
     setCategories={setCategories}

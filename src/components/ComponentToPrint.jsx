@@ -1,20 +1,51 @@
 import React from 'react'
 import logo from '../img/logo.png'
-
-
+import { useEffect, useState } from 'react';
 
 
 export const ComponentToPrint = React.forwardRef((props, ref) => {
+
+    const [num, setNum] = useState(0);
+    const [invoice, setInvoice] = useState('');
+
+  function randomNumberInRange(min, max) {
+    // 👇️ get number between min (inclusive) and max (inclusive)
+    return Math.floor(Math.random() * (max - min + 70)) + min;
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // 👇️ generate random number between 1 and 10
+      setNum(randomNumberInRange(1, 20000));
+    }, 1000); // 👈️ runs every 1 second
+
+    return () => {
+      clearInterval(interval);
+      return (
+        <div>
+          {setInvoice(num)}
+        </div>
+      );
+
+    };
+  }, []);
+
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+    var today = new Date();
+   const  time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+
+   
     const {cartItems, grandPrice} = props
     const comName = `ohi's store`;
-    const num1 = "08122333000";
-    const num2 = "000222000";
-    const attender = "David"; 
-    const invoiceID = "2561711az"
+    const num1 = "08135585449";
+    const num2 = "07045741919";
+    const attender = "admin"; 
+    const invoiceID = {num}
     return (
         <div ref={ref}>
 
-                <div className='block flex flex-wrap w-60 h-fit flex-col capitalize p-2 font-futura'>
+                <div className='block flex flex-wrap w-full h-fit flex-col capitalize p-2 font-futura'>
                     <div className='receipt uppercase
                     justify-center
                     items-center
@@ -23,15 +54,15 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
                     p-0
                     '>
                         <span className='
-                        flex 
+                        flex  flex-col
                         text-2xl
                         items-center
                         justify-center
                         gap-2
                         '>
                          <img src={logo} alt={comName} style={{
-                             width: '40px',
-                             height: '30px'
+                             width: '60px',
+                             height: '50px'
                          }}/>  {comName}
                         </span>
                         <span className='text-xs'>
@@ -46,13 +77,13 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
                     border-t-2
                     '>
                         <span>
-                           Invoice ID: {invoiceID}
+                           Invoice ID: {num}
                         </span>
                         <span>
-                           Date: 12: 34pm
+                           Date:{date}
                         </span>
                         <span>
-                            time: 233
+                            time: {time}
                         </span>
                         <span>
                           staff: {attender}
@@ -121,7 +152,7 @@ export const ComponentToPrint = React.forwardRef((props, ref) => {
                                 thanks for shopping with us
                             </span>
                             <span className='xs mt-2'>
-                          Powered by Planet E ICT Multi Solutions Ltd 08092041164, www.planetict.com 
+                          Powered by Planet E ICT Multi Solutions Ltd 08092041164, www.planeetict.com 
                         </span>
                         </div>
 
